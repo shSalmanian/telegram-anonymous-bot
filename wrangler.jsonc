@@ -16,6 +16,9 @@
     "env": {
         "bot01": {
             "name": "SheIsAugustBot"
+        },
+        "bot02": {
+            "name": "TalkToZardBot"
         }
     }
 }

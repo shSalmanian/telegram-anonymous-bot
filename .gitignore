@@ -28,6 +28,7 @@ build/
 
 # IDE
 .vscode/
+.vscode
 
 # OS
 .DS_Store
