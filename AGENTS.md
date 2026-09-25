@@ -1,13 +1,17 @@
 # Cloudflare Workers
 
-STOP. Your knowledge of Cloudflare Workers APIs and limits may be outdated. Always retrieve current documentation before any Workers, KV, R2, D1, Durable Objects, Queues, Vectorize, AI, or Agents SDK task.
+Before making changes involving Cloudflare Workers or Cloudflare products, retrieve the current official Cloudflare documentation. Do not rely on outdated knowledge for APIs, configuration, limits, quotas, or runtime behavior.
 
-## Docs
+## Documentation
 
-- https://developers.cloudflare.com/workers/
-- MCP: `https://docs.mcp.cloudflare.com/mcp`
+- Cloudflare Workers:
+  https://developers.cloudflare.com/workers/
 
-For all limits and quotas, retrieve from the product's `/platform/limits/` page. eg. `/workers/platform/limits`
+- Wrangler:
+  https://developers.cloudflare.com/workers/wrangler/
+
+- Workers limits:
+  https://developers.cloudflare.com/workers/platform/limits/
 
 ## Commands
 
@@ -17,25 +21,20 @@ For all limits and quotas, retrieve from the product's `/platform/limits/` page.
 | `npx wrangler deploy` | Deploy to Cloudflare |
 | `npx wrangler types` | Generate TypeScript types |
 
-Run `wrangler types` after changing bindings in wrangler.jsonc.
+Run `npx wrangler types` after changing Worker bindings or other configuration that affects generated types.
 
 ## Node.js Compatibility
 
+Do not assume Node.js APIs are available in Cloudflare Workers.
+
+Before using Node.js-specific APIs, check the current Cloudflare Node.js compatibility documentation:
+
 https://developers.cloudflare.com/workers/runtime-apis/nodejs/
 
-## Errors
+## Security
 
-- **Error 1102** (CPU/Memory exceeded): Retrieve limits from `/workers/platform/limits/`
-- **All errors**: https://developers.cloudflare.com/workers/observability/errors/
-
-## Product Docs
-
-Retrieve API references and limits from:
-`/kv/` · `/r2/` · `/d1/` · `/durable-objects/` · `/queues/` · `/vectorize/` · `/workers-ai/` · `/agents/`
-
-## Best Practices (conditional)
-
-If the application uses Durable Objects or Workflows, refer to the relevant best practices:
-
-- Durable Objects: https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/
-- Workflows: https://developers.cloudflare.com/workflows/build/rules-of-workflows/
+- Never put Telegram bot tokens, API keys, passwords, or other secrets in source code or committed configuration files.
+- Use Cloudflare Worker Secrets for production secrets.
+- Never log secrets, authentication tokens, or unnecessary sensitive user data.
+- Do not weaken authentication, authorization, webhook validation, or secret handling without reviewing the security impact.
+- Do not add dependencies when the functionality can reasonably be implemented with existing APIs.

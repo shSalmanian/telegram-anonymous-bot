@@ -1,11 +1,10 @@
 {
-  "name": "billowing-star-39f9",
-  "version": "0.0.0",
+  "name": "telegram-anonymous-bot",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev --test-scheduled",
-    "start": "wrangler dev --test-scheduled",
+    "dev": "wrangler dev",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
