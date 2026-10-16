@@ -1,24 +1,13 @@
 {
-    "$schema": "node_modules/wrangler/config-schema.json",
-
-    "name": "telegram-anonymous-bot",
-
-    "main": "src/index.ts",
-
-    "compatibility_date": "2026-09-18",
-
-    "observability": {
-        "enabled": true
-    },
-
-    "upload_source_maps": true,
-
-    "env": {
-        "bot01": {
-            "name": "SheIsAugustBot"
-        },
-        "bot02": {
-            "name": "TalkToZardBot"
-        }
-    }
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "telegram-anonymous-bot",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-16",
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true,
+  "vars": {
+    "HIDE_USER_INFO": "false"
+  }
 }

@@ -38,6 +38,7 @@ export default {
       await handleUpdate(update, {
         token: env.TELEGRAM_BOT_TOKEN,
         ownerChatId,
+        hideUserInfo: env.HIDE_USER_INFO === "true"
       });
 
       return new Response("OK");

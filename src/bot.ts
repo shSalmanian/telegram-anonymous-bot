@@ -11,8 +11,8 @@ import {
 
 export interface BotContext {
   token: string;
-
   ownerChatId: number;
+  hideUserInfo: boolean;
 }
 
 export async function handleUpdate(
@@ -74,9 +74,11 @@ export async function handleUpdate(
   // User message
   const user = message.from;
 
-  const displayName = user
-    ? [user.first_name, user.last_name].filter(Boolean).join(" ")
-    : "Unknown user";
+  const displayName = context.hideUserInfo
+    ? "Hidden User"
+    : [message.from?.first_name, message.from?.last_name]
+        .filter(Boolean)
+        .join(" ") || "Unknown User";
 
   // Inform owner when the message was forwarded from another source
   if (message.forward_origin) {
@@ -87,12 +89,21 @@ export async function handleUpdate(
     );
   }
 
+  if (context.hideUserInfo) {
+  await copyMessage(
+    context.token,
+    context.ownerChatId,
+    message.chat.id,
+    message.message_id
+  );
+} else {
   await forwardMessage(
     context.token,
     context.ownerChatId,
     message.chat.id,
     message.message_id
   );
+}
 
   // Show the user information and Reply button
   await sendMessageWithReplyButton(
